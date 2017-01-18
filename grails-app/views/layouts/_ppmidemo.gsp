@@ -138,6 +138,17 @@
 <div id="sr-ppmi-messages">
     <p id="error-msgs">{{messages.error}}</p>
     <p id="loading-msgs">Completed Requests: {{messages.finishedRequests}} / {{messages.totalRequests}}</p>
+    <table class="sr-ppmi-table">
+        <tr>
+            <td></td><td>Subset 1</td><td>Subset 2</td>
+        </tr>
+        <tr>
+            <td>#IDs</td><td>{{messages.numTMIDs.subset1}}</td><td>{{messages.numTMIDs.subset2}}</td>
+        </tr>
+        <tr>
+            <td>#IDs with variants</td><td>{{messages.numVIDs.subset1}}</td><td>{{messages.numVIDs.subset2}}</td>
+        </tr>
+    </table>
 </div>
 <br/>
 <ppmi-demo data="variantDB.data" show="variantDB.showViz" style="float: left;"></ppmi-demo>

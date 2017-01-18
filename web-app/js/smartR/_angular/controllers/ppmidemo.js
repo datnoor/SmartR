@@ -56,6 +56,8 @@ window.smartRApp.controller('PPMIDemoController',
             loading: "",
             totalRequests: 0,
             finishedRequests: 0,
+            numTMIDs: {subset1: 0, subset2: 0},
+            numVIDs: {subset1: 0, subset2: 0}
         };
 
         $scope.$watch('variantDB', function(vdb, vdbOld) {
@@ -350,8 +352,12 @@ window.smartRApp.controller('PPMIDemoController',
             $scope.variantDB.running = true;
             $scope.variantDB.showViz = false;
             getTMIDs().then(function(tmIDs) {
+                $scope.messages.numTMIDs.subset1 = tmIDs.filter(function(d) { return d.subset === 1; }).length;
+                $scope.messages.numTMIDs.subset2 = tmIDs.filter(function(d) { return d.subset === 2; }).length;
                 $scope.variantDB.running = true;
                 getVariantDBIDs(tmIDs).then(function(variantDBIDs) {
+                    $scope.messages.numVIDs.subset1 = variantDBIDs.filter(function(d) { return d.subset === 1; }).length;
+                    $scope.messages.numVIDs.subset2 = variantDBIDs.filter(function(d) { return d.subset === 2; }).length;
                     if ($scope.variantDB.regions) {
                         getVariantDBRequestsForRegions(variantDBIDs).then(function(requests) {
                             $scope.messages.totalRequests += requests.length;
