@@ -11,7 +11,7 @@ window.smartRApp.controller('PPMIDemoController',
             data: [],
             regions: '',
             selectedGenes: '',
-            server: "http://bio3.uni.lu/accessDB/accessDB",
+            server: "http://10.79.2.77/accessDB",
             func_refgene: {
                 exonic: false,
                 intronic: false,
@@ -181,6 +181,7 @@ window.smartRApp.controller('PPMIDemoController',
 
             filtersString += filters1.length ? '&func_refgene!ov!' + filters1.join(',') : filtersString;
             filtersString += filters2.length ? '&exonicfunc_refgene!ov!' + filters2.join(',') : filtersString;
+            filtersString += '&field_1000g2015aug_eur,exac_all,esp6500si_ea!lt!' + $scope.variantDB.misc.globalMAF;
             return filtersString;
         };
 
@@ -397,8 +398,8 @@ window.smartRApp.controller('PPMIDemoController',
 
         $scope.createPDMapLayout = function() {
             var cohorts = smartRUtils.countCohorts();
-            var identifier1 = Math.random() * Math.pow(10,17);
-            var identifier2 = Math.random() * Math.pow(10,17);
+            var identifier1 = + new Date();
+            var identifier2 = + new Date() + 1;
             _createPDMapLayout(1, identifier1).then(function() {
                 if (cohorts === 2) {
                     _createPDMapLayout(2, identifier2).then(function() {
