@@ -2,7 +2,7 @@
 <script type="text/ng-template" id="ppmidemo">
 <div ng-controller="PPMIDemoController">
 
-
+<button ng-click="downloadFile()">Download Variant Summary</button>
 <div id="ppmi-form">
     <div id="sr-ppmi-variantdb-form">
         <div>

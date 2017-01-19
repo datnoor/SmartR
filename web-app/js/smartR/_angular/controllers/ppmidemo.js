@@ -9,6 +9,7 @@ window.smartRApp.controller('PPMIDemoController',
 
         $scope.variantDB = {
             data: [],
+            file: '',
             regions: '',
             selectedGenes: '',
             server: "http://10.79.2.77/accessDB",
@@ -66,6 +67,11 @@ window.smartRApp.controller('PPMIDemoController',
             }
             $scope.variantDB.invalid = !vdb.server || (!!vdb.regions && !!vdb.selectedGenes);
         }, true);
+
+        $scope.downloadFile = function() {
+            var blob =  new Blob([$scope.variantDB.file], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, "variantSummary.tsv");
+        };
 
         var checkPDMapSanity = function() {
             $scope.pdmap.invalid = !$scope.pdmap.user ||
@@ -286,7 +292,13 @@ window.smartRApp.controller('PPMIDemoController',
                 var variants = indices['ids'].map(function(idIndex) {
                     return d[idIndex];
                 });
-                var frq = variants.filter(function(d) { return d.indexOf('1') !== -1; }).length / ids.length;
+                var frq = variants.filter(function(d,i) {
+                    var hasVariant = d.indexOf('1') !== -1;
+                    if (hasVariant) {
+                        $scope.variantDB.file += ids[i] + '\t' + gene + '\t' + pos + '\t' + subset + '\n';
+                    }
+                    return hasVariant;
+                }).length / ids.length;
                 if (! isNaN(frq) && frq !== 0 && frq >= $scope.variantDB.misc.cohortMAF) {
                     $scope.variantDB.data.push({
                         pos: pos,
@@ -339,6 +351,7 @@ window.smartRApp.controller('PPMIDemoController',
         };
 
         var cleanup = function() {
+            $scope.variantDB.file = 'subject\tgene\tpos\tsubset\n';
             $scope.variantDB.data = [];
             $scope.variantDB.showViz = false;
             $scope.messages.error = '';
