@@ -16,11 +16,11 @@
 
         <div>
             <label for="variantdb-genes">Genes: </label>
-            <input id="variantdb-genes" type="text" placeholder="ALB,CCR5,CD4,IL10" ng-model="variantDB.selectedGenes"/>
+            <input id="variantdb-genes" type="text" maxlength="500000" placeholder="ALB,CCR5,CD4,IL10" ng-model="variantDB.selectedGenes"/>
         </div>
 
         <div>
-            <label for="variantdb-serer">Server: </label>
+            <label for="variantdb-server">Server: </label>
             <input id="variantdb-server" type="text" ng-model="variantDB.server"/>
         </div>
 
@@ -70,33 +70,33 @@
             </div>
 
             <div>
-                <input id="sr-ppmi-insertion-check" type="checkbox" ng-model="variantDB.exonicfunc_refgene.frameshift_insertion"/>
-                <label for="sr-ppmi-insertion-check">frameshift insertion</label>
+                <input id="sr-ppmi-insertion-check1" type="checkbox" ng-model="variantDB.exonicfunc_refgene.frameshift_insertion"/>
+                <label for="sr-ppmi-insertion-check1">frameshift insertion</label>
             </div>
 
             <div>
-                <input id="sr-ppmi-insertion-check" type="checkbox" ng-model="variantDB.exonicfunc_refgene.nonframeshift_insertion"/>
-                <label for="sr-ppmi-insertion-check">nonframeshift insertion</label>
+                <input id="sr-ppmi-insertion-check2" type="checkbox" ng-model="variantDB.exonicfunc_refgene.nonframeshift_insertion"/>
+                <label for="sr-ppmi-insertion-check2">nonframeshift insertion</label>
             </div>
 
             <div>
-                <input id="sr-ppmi-deletion-check" type="checkbox" ng-model="variantDB.exonicfunc_refgene.frameshift_deletion"/>
-                <label for="sr-ppmi-deletion-check">frameshift deletion</label>
+                <input id="sr-ppmi-deletion-check1" type="checkbox" ng-model="variantDB.exonicfunc_refgene.frameshift_deletion"/>
+                <label for="sr-ppmi-deletion-check1">frameshift deletion</label>
             </div>
 
             <div>
-                <input id="sr-ppmi-deletion-check" type="checkbox" ng-model="variantDB.exonicfunc_refgene.nonframeshift_deletion"/>
-                <label for="sr-ppmi-deletion-check">nonframeshift deletion</label>
+                <input id="sr-ppmi-deletion-check2" type="checkbox" ng-model="variantDB.exonicfunc_refgene.nonframeshift_deletion"/>
+                <label for="sr-ppmi-deletion-check2">nonframeshift deletion</label>
             </div>
 
             <div>
-                <input id="sr-ppmi-block-substitution-check" type="checkbox" ng-model="variantDB.exonicfunc_refgene.frameshift_substitution"/>
-                <label for="sr-ppmi-block-substitution-check">frameshift substitution</label>
+                <input id="sr-ppmi-block-substitution-check1" type="checkbox" ng-model="variantDB.exonicfunc_refgene.frameshift_substitution"/>
+                <label for="sr-ppmi-block-substitution-check1">frameshift substitution</label>
             </div>
 
             <div>
-                <input id="sr-ppmi-block-substitution-check" type="checkbox" ng-model="variantDB.exonicfunc_refgene.nonframeshift_substitution"/>
-                <label for="sr-ppmi-block-substitution-check">nonframeshift substitution</label>
+                <input id="sr-ppmi-block-substitution-check2" type="checkbox" ng-model="variantDB.exonicfunc_refgene.nonframeshift_substitution"/>
+                <label for="sr-ppmi-block-substitution-check2">nonframeshift substitution</label>
             </div>
         </div>
 
